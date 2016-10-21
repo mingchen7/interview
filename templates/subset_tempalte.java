@@ -18,7 +18,6 @@ public class Solution {
         result.add(new ArrayList<Integer>(list));
 
         for (int i = pos; i < num.length; i++) {
-
             list.add(num[i]);
             subsetsHelper(result, list, num, i + 1);
             list.remove(list.size() - 1);
