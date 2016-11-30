@@ -1,12 +1,19 @@
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie trie = new Trie();
+ * trie.insert("lintcode");
+ * trie.search("lint"); will return false
+ * trie.startsWith("lint"); will return true
+ */
 class TrieNode {
     // Initialize your data structure here.
     char c;
     boolean has_word;
     HashMap<Character, TrieNode> children = new HashMap<Character, TrieNode>();
     public TrieNode() {
-        
+
     }
-    
+
     public TrieNode(char c) {
         this.c = c;
     }
@@ -24,24 +31,20 @@ public class Trie {
         TrieNode curNode = root;
         HashMap<Character, TrieNode> curChildren = curNode.children;
         char[] array = word.toCharArray();
-        
+
         for (int i = 0; i < array.length; i++) {
             char c = array[i];
             if (!curChildren.containsKey(c)) {
                 TrieNode node = new TrieNode(c);
                 curChildren.put(c, node);
-                curNode = curChildren.get(c);
             }
-            else {
-                curNode = curChildren.get(c);
-            }
-            
+
+            curNode = curChildren.get(c);
             curChildren = curNode.children;
-            if (i == array.length - 1) {
-                curNode.has_word = true;
-            }
         }
-        
+
+        curNode.has_word = true;
+
     }
 
     // Returns if the word is in the trie.
@@ -60,13 +63,14 @@ public class Trie {
     // Returns if there is any word in the trie
     // that starts with the given prefix.
     public boolean startsWith(String prefix) {
-        return findStringNodePos(prefix) == null? false: true;    
+        return findStringNodePos(prefix) == null? false: true;
     }
-    
+
+    // find the TrieNode given the string s
     private TrieNode findStringNodePos(String s) {
         TrieNode curNode = root;
         HashMap<Character, TrieNode> curChildren = root.children;
-        
+
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (curChildren.containsKey(c)) {
@@ -77,7 +81,7 @@ public class Trie {
                 return null;
             }
         }
-        
+
         return curNode;
     }
 }
