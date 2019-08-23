@@ -27,6 +27,9 @@ hashmap+linked list
 [ugly number II](https://www.lintcode.com/problem/ugly-number-ii/description)  
 容易想到用heap的做法，但是O(n)的做法很难想到。用三个指针track分别x2，x3，x5能拿到最大的数（小于当前last），新的last在三者x2，x3，x5的最小中产生。   
 [k closest points](https://www.lintcode.com/problem/k-closest-points/description)
+[top k largest numbers II](https://www.lintcode.com/problem/top-k-largest-numbers-ii/description)  
+[merge k sorted lists](https://www.lintcode.com/problem/merge-k-sorted-lists/description)  
+python的heap只能存tuple(val, node)，在val相同时会比较node而报错，不太好写。用merge sort更好做。
 
 
 ## Memorize search and DP
