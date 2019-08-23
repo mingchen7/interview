@@ -24,7 +24,9 @@ follow up：如果有duplicates，需要在hashmap里存indices的list，且arra
 [first unique number in data stream I/II](https://www.lintcode.com/problem/first-unique-number-in-data-stream/description)  
 hashmap+linked list  
 
-[ugly number II]
+[ugly number II](https://www.lintcode.com/problem/ugly-number-ii/description)  
+容易想到用heap的做法，但是O(n)的做法很难想到。用三个指针track分别x2，x3，x5能拿到最大的数（小于当前last），新的last在三者x2，x3，x5的最小中产生。   
+[k closest points](https://www.lintcode.com/problem/k-closest-points/description)
 
 
 ## Memorize search and DP
