@@ -11,8 +11,45 @@
 根据数值进行二分而非index。证明二分所得的数在所给的数组中很重要 - 二分的判断条件是kth smallest，会一直判断至满足条件且在数组中的那个值。
 
 ## Divide-and-Conquer
+[minimum subtree](https://www.lintcode.com/problem/minimum-subtree/description)  
+[binary tree path](https://www.lintcode.com/problem/binary-tree-paths/description)  
+[lowest common ancestor I/II/III](https://www.lintcode.com/problem/lowest-common-ancestor-of-a-binary-tree/description)  
+TODO: [kth smallest element in BST](https://www.lintcode.com/problem/kth-smallest-element-in-a-bst/description)  
+TODO: [binary search tree iterator](https://www.lintcode.com/problem/binary-search-tree-iterator/description)  
+TODO: [closest binary search tree value I/II](https://www.lintcode.com/problem/closest-binary-search-tree-value/description)  
+TODO: [search range in a BST](https://www.lintcode.com/problem/search-range-in-binary-search-tree/description)  
 
 ## Two-pointers
+### 背向指针
+[valid palindrome I/II](https://www.lintcode.com/problem/valid-palindrome/description)  
+[two sum unique pairs](https://www.lintcode.com/problem/two-sum-unique-pairs/description)  
+TODO: [two sum less than/equal to target](https://www.lintcode.com/problem/two-sum-less-than-or-equal-to-target/description)  
+TODO: [two sum greater than target](https://www.lintcode.com/problem/two-sum-greater-than-target/description)  
+TODO: [two sum closest to target](https://www.lintcode.com/problem/two-sum-closest-to-target/description)  
+TODO: [3 sum closest](https://www.lintcode.com/problem/two-sum-closest-to-target/description)  
+[3 sum](https://www.lintcode.com/problem/3sum/)  
+TODO: [4 sum](https://www.lintcode.com/problem/4sum/)  
+[triangle count](https://www.lintcode.com/problem/triangle-count/description)  
+
+---
+### Partition类
+[partition array](https://www.lintcode.com/problem/partition-array/description)  
+TODO: [quick select](https://www.lintcode.com/problem/kth-smallest-numbers-in-unsorted-array/description)  
+[interleaving positive and negative numbers](https://www.lintcode.com/problem/interleaving-positive-and-negative-numbers/description)  
+[sort letters by case](https://www.lintcode.com/problem/sort-letters-by-case/description)  
+[sort colors](https://www.lintcode.com/problem/sort-colors/description)  
+partition成三个部分  
+
+[rainbow sort](https://www.lintcode.com/problem/sort-colors-ii/description)  
+本质是个divide and conquer
+
+---
+
+### 同向双指针 (滑动窗口，快慢指针)
+[move zeros](https://drive.google.com/drive/my-drive)  
+TODO: [intersection of two linked list](https://www.lintcode.com/problem/intersection-of-two-linked-lists/description)  
+TODO: [linked list cycle I/II](https://www.lintcode.com/problem/linked-list-cycle/description)  
+
 
 ## BFS
 [binary tree level order traversal I/II](https://leetcode.com/problems/binary-tree-level-order-traversal/)  
@@ -39,7 +76,7 @@ BFS time complexity: O(N+M)， N为点数，M为边数。
 [N queens](https://www.lintcode.com/problem/n-queens/description)  
 [letter combinations of a phone number](https://www.lintcode.com/problem/letter-combinations-of-a-phone-number/description)  
 [word search II](https://www.lintcode.com/problem/word-search-ii/description)  
-[word ladder II](https://www.lintcode.com/problem/word-ladder-ii/description)  
+TODO:  [word ladder II](https://www.lintcode.com/problem/word-ladder-ii/description)  
 BFS+DFS
 
 ## Hash and Heap
@@ -58,13 +95,16 @@ python的heap只能存tuple(val, node)，在val相同时会比较node而报错�
 
 
 ## Memorize search and DP
-[longest palindromic substring](https://leetcode.com/problems/longest-palindromic-substring/)  
-[triangle](https://www.lintcode.com/problem/triangle/)  
-[wildcard matching](https://www.lintcode.com/problem/wildcard-matching/)  
-[regular expression matching](https://www.lintcode.com/problem/regular-expression-matching/)  
-[word pattern](https://www.lintcode.com/problem/word-pattern-ii/description)  
+TODO: [longest palindromic substring](https://leetcode.com/problems/longest-palindromic-substring/)  
+TODO: [triangle](https://www.lintcode.com/problem/triangle/)  
+TODO: [wildcard matching](https://www.lintcode.com/problem/wildcard-matching/)  
+TODO: [regular expression matching](https://www.lintcode.com/problem/regular-expression-matching/)  
+TODO: [word pattern](https://www.lintcode.com/problem/word-pattern-ii/description)  
 无法使用记忆化，太多状态影响结果。  
-[word break/word break II/work break III](https://www.lintcode.com/problem/word-break/)  
+
+TODO: [word break/word break II/work break III](https://www.lintcode.com/problem/word-break/)  
+TODO: [palindrome partitioning](https://www.lintcode.com/problem/palindrome-partitioning/description)  
+类似记忆化搜索，但效果甚微。
 
 [stone game](https://www.lintcode.com/problem/stone-game/description)  
 [card game](https://www.lintcode.com/problem/card-game/description)  
