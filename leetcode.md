@@ -155,7 +155,11 @@ TODO: [regular expression matching](https://www.lintcode.com/problem/regular-exp
 TODO: [word pattern](https://www.lintcode.com/problem/word-pattern-ii/description)  
 无法使用记忆化，太多状态影响结果。  
 
-TODO: [word break/word break II/work break III](https://www.lintcode.com/problem/word-break/)  
+[word break/word break II/work break III](https://www.lintcode.com/problem/word-break/)  
+I: 用记忆化搜索过不了(memory exceed)，用dp数组记录前i个字符是否可以被break。dp[i]为前面dp[j] = True and s[i-j:i]在字典中。小优化：只需搜最大word length范围内。  
+II: 需要用记忆化搜索，裸搜过不了。dfs返回当前s所有可能的sentence，然后对每个sentence加上前缀，组成新的解。
+III: 和II几乎一样，只求方案数量。忽略大小写。  
+
 [palindrome partitioning](https://www.lintcode.com/problem/palindrome-partitioning/description)  
 类似记忆化搜索，但效果甚微。
 
@@ -163,8 +167,18 @@ TODO: [word break/word break II/work break III](https://www.lintcode.com/problem
 根据范围进行记忆化搜索。f[i,j] = min(f[i,k] + f[k+1,j] + sum[i,j]) for i <= k < j。
 需要注意边界条件，f[i,i] = 0而非A[i]。这题用传统DP需要考虑i,j从哪里开始，比较麻烦。
 
-TODO: [card game](https://www.lintcode.com/problem/card-game/description)  
-TODO: [knight shortest path I & II](https://www.lintcode.com/problem/knight-shortest-path/)  
-TODO: [Longest Increasing Subsequence](https://www.lintcode.com/problem/longest-increasing-subsequence/)  
-TODO: [Russian Doll Envelopes](https://www.lintcode.com/problem/russian-doll-envelopes/)  
-TODO: [Largest Divisible Subset](https://www.lintcode.com/problem/largest-divisible-subset/)  
+[card game](https://www.lintcode.com/problem/card-game/description)  
+这题用普通DP很难想，需要以profit和cost值形成矩阵，更新规则也比较复杂。用记忆化搜索需要记忆三元组状态(index, profit, cost)，按每张牌取与不取来搜索。
+
+[knight shortest path I & II](https://www.lintcode.com/problem/knight-shortest-path/)  
+八个方向(I)不能用记忆化搜索，会导致循环依赖爆栈，只能用BFS。 四个方向(II)用BFS或DFS皆可。  
+
+[Longest Increasing Subsequence](https://www.lintcode.com/problem/longest-increasing-subsequence/)  
+O(n^2): dp[i]为以nums[i]为结尾的最长LIS。dp[i] = max(dp[k] + 1 if nums[k] < nums[i], for 0<=k<i)  
+O(nlogn): 比较难想到，用一个辅助数组B，下标为LIS的长度，值为对应LIS的结尾的最小数。用二分在B上搜索第一个大于nums[i]的数并更新。因为B的初始值都为max int, 开始会不断往后更新。若二分找到小于i的index，则说明对应的LIS有更小的结尾数，即nums[i]。
+
+[Russian Doll Envelopes](https://www.lintcode.com/problem/russian-doll-envelopes/)  
+这题O(n^2)过不了，需要借助二分搜。先按信封第一维排序，然后在第二维中找LIS。二分方法类似LIS，借用辅助数组。
+
+[Largest Divisible Subset](https://www.lintcode.com/problem/largest-divisible-subset/)  
+与LIS类似，dp[i]为以nums[i]结尾的最大集合，若nums[i] % nums[j] == 0则进行更新。回溯需要用一个father数组记录上一个跳过来的点。
