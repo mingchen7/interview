@@ -80,7 +80,7 @@ BFS+DFS
 
 ## Data Structures
 
-### Hash heap
+### Hash and heap
 [LRU cache](https://www.lintcode.com/problem/lru-cache/)  
 [insert delete get random O(1)](https://www.lintcode.com/problem/insert-delete-getrandom-o1/description)  
 follow up：如果有duplicates，需要在hashmap里存indices的list，且array中存(value, index in indices list)。删除时可以从indices list中删掉最后一个index，并在用最后一个num盖掉被删除位置时更新对应index。实现较为复杂。  
@@ -95,7 +95,54 @@ hashmap+linked list
 [merge k sorted lists](https://www.lintcode.com/problem/merge-k-sorted-lists/description)  
 python的heap只能存tuple(val, node)，在val相同时会比较node而报错，不太好写。用merge sort更好做。
 
+TODO: [trapping rain water I/II](https://www.lintcode.com/problem/trapping-rain-water/description)  
+技巧：矩阵从外向内遍历
+TODO: [data stream median](https://www.lintcode.com/problem/find-median-from-data-stream/description)    
+TODO: [sliding window median](https://www.lintcode.com/problem/sliding-window-median/description)  
+
+**Heap解说**
+
+indexing: 左右子节点2*i+1 / 2*i+2， 父节点(i-1) / 2
+add(): O(logn)  
+pop(): O(logn)  
+remove(): O(n)，可借用hash+heap优化至O(logn)  
+top(): O(1)  
+heapify(): O(n)
+
+```
+def sift_up(id):
+  while (parent(id) > -1):
+    parent_id = parent(id)
+    if heap.get(parent_id) < heap.get(id):
+      break
+    else:
+      swap(id, parent_id)
+    id = parent_id    
+```
+
+```
+def sift_down(id):
+  while lson(id) < heap.size():
+    left_id = lson(id)
+    right_id = rson(id)
+    if right_id > heap.size() or heap.get(left_id) < heap.get(right_id):
+      son = left_id
+    else:
+      son = right_id
+
+    if heap.get(id) < heap.get(son):
+      break
+    else:
+      swap(id, son)
+    id = son    
+```
+
 ### Stack
+
+### Deque
+TODO: [sliding window maximum](https://www.lintcode.com/problem/sliding-window-maximum/description)  
+维护一个递减队列，队列头为当前window的max。
+TODO: [sliding window matrix maximum](https://www.lintcode.com/problem/sliding-window-matrix-maximum/description)  
 
 ### Trie
 [implement Trie](https://www.lintcode.com/problem/implement-trie-prefix-tree/description)  
@@ -144,7 +191,8 @@ class UnionFind(object):
 
 ### Sweep line
 TODO: [number of airlines in the sky](https://www.lintcode.com/problem/number-of-airplanes-in-the-sky/)  
-
+TODO: [building outline](https://www.lintcode.com/en/problem/building-outline/)  
+涉及到heap的删除操作。
 
 
 ## Memorize search and DP
