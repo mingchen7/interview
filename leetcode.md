@@ -75,8 +75,11 @@ BFS time complexity: O(N+M)， N为点数，M为边数。
 [N queens](https://www.lintcode.com/problem/n-queens/description)  
 [letter combinations of a phone number](https://www.lintcode.com/problem/letter-combinations-of-a-phone-number/description)  
 [word search II](https://www.lintcode.com/problem/word-search-ii/description)  
-TODO:  [word ladder II](https://www.lintcode.com/problem/word-ladder-ii/description)  
-BFS+DFS
+[word ladder II](https://www.lintcode.com/problem/word-ladder-ii/description)  
+可以有多种解法：  
+1) DFS搜所有解，再筛选出所有最短路径  
+2) BFS先搜最短路径，再用DFS搜并根据最短路径剪枝  
+3) (optimal) BFS从终点开始搜，记录距离。用DFS开始搜，每一步仅考虑往距离变小的方向搜(distance-1)  
 
 ## Data Structures
 
@@ -141,7 +144,8 @@ def sift_down(id):
 
 ### Deque
 TODO: [sliding window maximum](https://www.lintcode.com/problem/sliding-window-maximum/description)  
-维护一个递减队列，队列头为当前window的max。
+维护一个递减队列，队列头为当前window的max。  
+
 TODO: [sliding window matrix maximum](https://www.lintcode.com/problem/sliding-window-matrix-maximum/description)  
 
 ### Trie
@@ -198,10 +202,15 @@ TODO: [building outline](https://www.lintcode.com/en/problem/building-outline/)
 ## Memorize search and DP
 [longest palindromic substring](https://www.lintcode.com/problem/longest-palindromic-substring/description)  
 [triangle](https://www.lintcode.com/problem/triangle/)  
-TODO: [wildcard matching](https://www.lintcode.com/problem/wildcard-matching/)  
-TODO: [regular expression matching](https://www.lintcode.com/problem/regular-expression-matching/)  
-TODO: [word pattern](https://www.lintcode.com/problem/word-pattern-ii/description)  
+[wildcard matching](https://www.lintcode.com/problem/wildcard-matching/)  
+按pattern为`?`, `*`分类讨论。当pattern为`*`时，可以选择match 0个或者1个字符。
+
+[regular expression matching](https://www.lintcode.com/problem/regular-expression-matching/)  
+需要注意与wildcard matching不同的是，`*`在匹配是必须有一个前缀字符，而非任意多个字符。
+
+[word pattern](https://www.lintcode.com/problem/word-pattern-ii/description)  
 无法使用记忆化，太多状态影响结果。  
+注意：若用i,j index的搜法，需用str[j:].startwith()而非str[j:].startwith()。  
 
 [word break/word break II/work break III](https://www.lintcode.com/problem/word-break/)  
 I: 用记忆化搜索过不了(memory exceed)，用dp数组记录前i个字符是否可以被break。dp[i]为前面dp[j] = True and s[i-j:i]在字典中。小优化：只需搜最大word length范围内。  
