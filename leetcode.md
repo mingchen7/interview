@@ -7,6 +7,9 @@
 [find minimum in rotated sorted array](https://www.lintcode.com/problem/find-minimum-in-rotated-sorted-array/description)  
 [search in rotated sorted array](https://www.lintcode.com/problem/find-minimum-in-rotated-sorted-array/description)  
 [find peak element](https://www.lintcode.com/problem/find-peak-element/)  
+[median of two sorted array](https://leetcode.com/problems/median-of-two-sorted-arrays/)  
+用find kth来做，比较A[idx_a + k//2 -1]和B[idx_b + k//2 -1]的大小来丢掉一半的数。时间复杂度O(log(m+n))。leetcode存在O(min(m,n))的解法，太麻烦。    
+
 [median of k sorted array](https://www.lintcode.com/problem/median-of-k-sorted-arrays/description)  
 根据数值进行二分而非index。证明二分所得的数在所给的数组中很重要 - 二分的判断条件是kth smallest，会一直判断至满足条件且在数组中的那个值。
 
@@ -14,10 +17,50 @@
 [minimum subtree](https://www.lintcode.com/problem/minimum-subtree/description)  
 [binary tree path](https://www.lintcode.com/problem/binary-tree-paths/description)  
 [lowest common ancestor I/II/III](https://www.lintcode.com/problem/lowest-common-ancestor-of-a-binary-tree/description)  
-TODO: [kth smallest element in BST](https://www.lintcode.com/problem/kth-smallest-element-in-a-bst/description)  
-TODO: [binary search tree iterator](https://www.lintcode.com/problem/binary-search-tree-iterator/description)  
-TODO: [closest binary search tree value I/II](https://www.lintcode.com/problem/closest-binary-search-tree-value/description)  
-TODO: [search range in a BST](https://www.lintcode.com/problem/search-range-in-binary-search-tree/description)  
+[kth smallest element in BST](https://www.lintcode.com/problem/kth-smallest-element-in-a-bst/description)  
+[binary search tree iterator](https://www.lintcode.com/problem/binary-search-tree-iterator/description)  
+[closest binary search tree value I/II](https://www.lintcode.com/problem/closest-binary-search-tree-value/description)  
+I: 用in-order遍历做是O(n)的，这题可以求lower bound与upper bound，复杂度为O(h)。  
+
+II: 三种解法  
+1) 用priority queue - O(nlogk)  
+2) 先求出inorder，再二分找到小于并最近的，然后往两边走直到找到k个 - O(n) + O(logn) = O(n)  
+3) 利用两个stack在tree上进行navigate，非常复杂 - O(k+lgn)  
+
+
+[search range in a BST](https://www.lintcode.com/problem/search-range-in-binary-search-tree/description)  
+
+
+```
+# BST in-order traversal using stack
+def inOrder(root):       
+    # Set current to root of binary tree
+    current = root  
+    stack = [] # initialize stack    
+
+    while True:           
+        # Reach the left most Node of the current Node
+        if current is not None:
+
+            # Place pointer to a tree node on the stack  
+            # before traversing the node's left subtree
+            stack.append(current)           
+            current = current.left  
+
+        # BackTrack from the empty subtree and visit the Node
+        # at the top of the stack; however, if the stack is  
+        # empty you are done
+        elif(stack):
+            current = stack.pop()
+            print(current.data)
+
+            # We have visited the node and its left  
+            # subtree. Now, it's right subtree's turn
+            current = current.right  
+
+        else:
+            break
+```
 
 ## Two-pointers
 ### 背向指针
@@ -30,6 +73,11 @@ TODO: [3 sum closest](https://www.lintcode.com/problem/two-sum-closest-to-target
 [3 sum](https://www.lintcode.com/problem/3sum/)  
 TODO: [4 sum](https://www.lintcode.com/problem/4sum/)  
 [triangle count](https://www.lintcode.com/problem/triangle-count/description)  
+[trapping rain water](https://www.lintcode.com/en/problem/trapping-rain-water/)  
+[container with most water](https://www.lintcode.com/problem/container-with-most-water/description)  
+
+[best time to buy stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/submissions/)  
+虽然不是背向指针，但是用到两个方向遍历。因为限制最多两笔交易，从左向右扫一遍记录到i为止一笔最大的交易，再从右向左扫一遍记录到i为止最大的交易，两者之和即为最大profit。  
 
 
 ### Partition类
@@ -43,9 +91,50 @@ partition成三个部分
 [rainbow sort](https://www.lintcode.com/problem/sort-colors-ii/description)  
 本质是个divide and conquer
 
+TODO: [nuts and bots problem](https://www.lintcode.com/en/problem/nuts-bolts-problem/)  
+
+
+```
+# 这个模版需要将pivot点设置在最左边
+def partition(nums, start, end):
+  left, right = start, end
+  pivot = nums[left]
+  while left < right:
+    while left < right and nums[right] >= nums[left]:
+      right -= 1
+    nums[left] = nums[right]
+    while left < right and nums[left] <= nums[right]:
+      left += 1
+    nums[right] = nums[left]
+
+  nums[left] = pivot
+  return left    
+```
+```
+def partition(nums, k):
+  left, right = start, end
+  while left < right:
+    while left < right and nums[left] < k:
+      left += 1
+
+    while left < right and nums[right] >= k:
+      right -= 1
+
+    if left < right:    
+      nums[left], nums[right] = nums[right], nums[left]
+      left += 1
+      right -= 1
+
+  return left    
+```
+
 
 ### 同向双指针 (滑动窗口，快慢指针)
 [move zeros](https://drive.google.com/drive/my-drive)  
+TODO: [minimum size subarray sum](https://www.lintcode.com/en/problem/minimum-size-subarray-sum/)  
+TODO: [longest substring without repeated characters](https://www.lintcode.com/en/problem/longest-substring-without-repeating-characters/)  
+TODO: [minimum window substring](https://www.lintcode.com/en/problem/minimum-window-substring/)  
+TODO: [longest substring with at most K distinct characters](https://www.lintcode.com/problem/longest-substring-with-at-most-k-distinct-characters/)  
 TODO: [intersection of two linked list](https://www.lintcode.com/problem/intersection-of-two-linked-lists/description)  
 TODO: [linked list cycle I/II](https://www.lintcode.com/problem/linked-list-cycle/description)  
 
@@ -98,7 +187,7 @@ hashmap+linked list
 [merge k sorted lists](https://www.lintcode.com/problem/merge-k-sorted-lists/description)  
 python的heap只能存tuple(val, node)，在val相同时会比较node而报错，不太好写。用merge sort更好做。
 
-TODO: [trapping rain water I/II](https://www.lintcode.com/problem/trapping-rain-water/description)  
+TODO: [trapping rain water II](https://www.lintcode.com/problem/trapping-rain-water-ii/description)    
 技巧：矩阵从外向内遍历
 TODO: [data stream median](https://www.lintcode.com/problem/find-median-from-data-stream/description)    
 TODO: [sliding window median](https://www.lintcode.com/problem/sliding-window-median/description)  
@@ -141,6 +230,7 @@ def sift_down(id):
 ```
 
 ### Stack
+TODO: [evaluate reverse polish notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)  
 
 ### Deque
 TODO: [sliding window maximum](https://www.lintcode.com/problem/sliding-window-maximum/description)  
