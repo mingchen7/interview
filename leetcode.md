@@ -66,18 +66,23 @@ def inOrder(root):
 ### 背向指针
 [valid palindrome I/II](https://www.lintcode.com/problem/valid-palindrome/description)  
 [two sum unique pairs](https://www.lintcode.com/problem/two-sum-unique-pairs/description)  
-TODO: [two sum less than/equal to target](https://www.lintcode.com/problem/two-sum-less-than-or-equal-to-target/description)  
-TODO: [two sum greater than target](https://www.lintcode.com/problem/two-sum-greater-than-target/description)  
-TODO: [two sum closest to target](https://www.lintcode.com/problem/two-sum-closest-to-target/description)  
-TODO: [3 sum closest](https://www.lintcode.com/problem/two-sum-closest-to-target/description)  
+[two sum less than/equal to target](https://www.lintcode.com/problem/two-sum-less-than-or-equal-to-target/description)  
+[two sum greater than target](https://www.lintcode.com/problem/two-sum-greater-than-target/description)  
+[two sum closest to target](https://www.lintcode.com/problem/two-sum-closest-to-target/description)  
+[3 sum closest](https://www.lintcode.com/problem/two-sum-closest-to-target/description)  
 [3 sum](https://www.lintcode.com/problem/3sum/)  
-TODO: [4 sum](https://www.lintcode.com/problem/4sum/)  
-[triangle count](https://www.lintcode.com/problem/triangle-count/description)  
-[trapping rain water](https://www.lintcode.com/en/problem/trapping-rain-water/)  
-[container with most water](https://www.lintcode.com/problem/container-with-most-water/description)  
+[4 sum](https://www.lintcode.com/problem/4sum/)  
+思路不难，很多细节。中间去重需要注意。  
 
-[best time to buy stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/submissions/)  
+[triangle count](https://www.lintcode.com/problem/triangle-count/description)  
+TODO: [trapping rain water](https://www.lintcode.com/en/problem/trapping-rain-water/)  
+TODO: [container with most water](https://www.lintcode.com/problem/container-with-most-water/description)  
+
+[best time to buy and sell stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/submissions/)  
 虽然不是背向指针，但是用到两个方向遍历。因为限制最多两笔交易，从左向右扫一遍记录到i为止一笔最大的交易，再从右向左扫一遍记录到i为止最大的交易，两者之和即为最大profit。  
+[best time to buy and sell stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/)  
+dp[i][j]为到第i天最多交易j次的max profit，解为dp[n-1][k]。具体解法见[leetcode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54117/Clean-Java-DP-solution-with-comment)  
+
 
 
 ### Partition类
@@ -188,8 +193,10 @@ hashmap+linked list
 python的heap只能存tuple(val, node)，在val相同时会比较node而报错，不太好写。用merge sort更好做。
 
 TODO: [trapping rain water II](https://www.lintcode.com/problem/trapping-rain-water-ii/description)    
-技巧：矩阵从外向内遍历
-TODO: [data stream median](https://www.lintcode.com/problem/find-median-from-data-stream/description)    
+技巧：矩阵从外向内遍历  
+
+[data stream median](https://www.lintcode.com/problem/find-median-from-data-stream/description)    
+维护max/max stack， size(max_stack) -size(min_stack) = 0 or = -1
 TODO: [sliding window median](https://www.lintcode.com/problem/sliding-window-median/description)  
 
 **Heap解说**
@@ -231,6 +238,8 @@ def sift_down(id):
 
 ### Stack
 TODO: [evaluate reverse polish notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)  
+*Super Stack*: 实现min, max, mode, avg的stack  
+two sigma面经，min/max按LC来，avg需要记录sum。most frequent需要用一个map记录frequency，另一个map记录frequency to set of numbers,同时维护全局最大frequency。
 
 ### Deque
 TODO: [sliding window maximum](https://www.lintcode.com/problem/sliding-window-maximum/description)  
