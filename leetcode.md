@@ -376,8 +376,27 @@ III: 和II几乎一样，只求方案数量。忽略大小写。
 O(n^2): dp[i]为以nums[i]为结尾的最长LIS。dp[i] = max(dp[k] + 1 if nums[k] < nums[i], for 0<=k<i)  
 O(nlogn): 比较难想到，用一个辅助数组B，下标为LIS的长度，值为对应LIS的结尾的最小数。用二分在B上搜索第一个大于nums[i]的数并更新。因为B的初始值都为max int, 开始会不断往后更新。若二分找到小于i的index，则说明对应的LIS有更小的结尾数，即nums[i]。
 
+[LIS II](https://www.lintcode.com/en/problem/longest-increasing-continuous-subsequence-ii/)  
+
 [Russian Doll Envelopes](https://www.lintcode.com/problem/russian-doll-envelopes/)  
 这题O(n^2)过不了，需要借助二分搜。先按信封第一维排序，然后在第二维中找LIS。二分方法类似LIS，借用辅助数组。
 
 [Largest Divisible Subset](https://www.lintcode.com/problem/largest-divisible-subset/)  
 与LIS类似，dp[i]为以nums[i]结尾的最大集合，若nums[i] % nums[j] == 0则进行更新。回溯需要用一个father数组记录上一个跳过来的点。
+
+[house robber I/II](https://www.lintcode.com/problem/house-robber/)  
+
+[maximum square](https://www.lintcode.com/en/problem/maximal-square/)  
+
+TODO: [coins in a line I/II/III](https://www.lintcode.com/problem/coins-in-a-line-iii/description)  
+
+TODO: [burst ballons](https://www.lintcode.com/en/problem/burst-balloons/)  
+
+TODO: [scramble string](https://www.lintcode.com/problem/scramble-string/)  
+
+TODO: [backpack I/II](https://www.lintcode.com/en/problem/backpack/)  
+
+TODO: [k sum](https://www.lintcode.com/en/problem/k-sum/)  
+三维DP。
+
+TODO: [minimum adjustment Cost](https://www.lintcode.com/problem/minimum-adjustment-cost/)  
