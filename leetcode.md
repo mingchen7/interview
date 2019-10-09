@@ -7,10 +7,14 @@
 [find minimum in rotated sorted array](https://www.lintcode.com/problem/find-minimum-in-rotated-sorted-array/description)  
 [search in rotated sorted array](https://www.lintcode.com/problem/find-minimum-in-rotated-sorted-array/description)  
 [find peak element](https://www.lintcode.com/problem/find-peak-element/)  
-[median of two sorted array](https://leetcode.com/problems/median-of-two-sorted-arrays/)  
+TODO: [find peak element II](https://www.lintcode.com/en/problem/find-peak-element-ii/)  
+对行进行二分，然后选取一行中的**最大值**，再选择向上或者向下走。注意不能选取极大值。复杂度为O(lgn*n)。最优做法为分行列分别二分，可以达到O(n)。  
+
+
+**[median of two sorted array](https://leetcode.com/problems/median-of-two-sorted-arrays/)**  
 用find kth来做，比较A[idx_a + k//2 -1]和B[idx_b + k//2 -1]的大小来丢掉一半的数。时间复杂度O(log(m+n))。leetcode存在O(min(m,n))的解法，太麻烦。    
 
-[median of k sorted array](https://www.lintcode.com/problem/median-of-k-sorted-arrays/description)  
+**[median of k sorted array](https://www.lintcode.com/problem/median-of-k-sorted-arrays/description)**  
 根据数值进行二分而非index。证明二分所得的数在所给的数组中很重要 - 二分的判断条件是kth smallest，会一直判断至满足条件且在数组中的那个值。
 
 ## Divide-and-Conquer
@@ -19,7 +23,7 @@
 [lowest common ancestor I/II/III](https://www.lintcode.com/problem/lowest-common-ancestor-of-a-binary-tree/description)  
 [kth smallest element in BST](https://www.lintcode.com/problem/kth-smallest-element-in-a-bst/description)  
 [binary search tree iterator](https://www.lintcode.com/problem/binary-search-tree-iterator/description)  
-[closest binary search tree value I/II](https://www.lintcode.com/problem/closest-binary-search-tree-value/description)  
+**[closest binary search tree value I/II](https://www.lintcode.com/problem/closest-binary-search-tree-value/description)**  
 I: 用in-order遍历做是O(n)的，这题可以求lower bound与upper bound，复杂度为O(h)。  
 
 II: 三种解法  
@@ -30,37 +34,6 @@ II: 三种解法
 
 [search range in a BST](https://www.lintcode.com/problem/search-range-in-binary-search-tree/description)  
 
-
-```
-# BST in-order traversal using stack
-def inOrder(root):       
-    # Set current to root of binary tree
-    current = root  
-    stack = [] # initialize stack    
-
-    while True:           
-        # Reach the left most Node of the current Node
-        if current is not None:
-
-            # Place pointer to a tree node on the stack  
-            # before traversing the node's left subtree
-            stack.append(current)           
-            current = current.left  
-
-        # BackTrack from the empty subtree and visit the Node
-        # at the top of the stack; however, if the stack is  
-        # empty you are done
-        elif(stack):
-            current = stack.pop()
-            print(current.data)
-
-            # We have visited the node and its left  
-            # subtree. Now, it's right subtree's turn
-            current = current.right  
-
-        else:
-            break
-```
 
 ## Two-pointers
 ### 背向指针
@@ -75,8 +48,8 @@ def inOrder(root):
 思路不难，很多细节。中间去重需要注意。  
 
 [triangle count](https://www.lintcode.com/problem/triangle-count/description)  
-TODO: [trapping rain water](https://www.lintcode.com/en/problem/trapping-rain-water/)  
-TODO: [container with most water](https://www.lintcode.com/problem/container-with-most-water/description)  
+[trapping rain water](https://www.lintcode.com/en/problem/trapping-rain-water/)  
+[container with most water](https://www.lintcode.com/problem/container-with-most-water/description)  
 
 [best time to buy and sell stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/submissions/)  
 虽然不是背向指针，但是用到两个方向遍历。因为限制最多两笔交易，从左向右扫一遍记录到i为止一笔最大的交易，再从右向左扫一遍记录到i为止最大的交易，两者之和即为最大profit。  
@@ -87,7 +60,9 @@ dp[i][j]为到第i天最多交易j次的max profit，解为dp[n-1][k]。具体�
 
 ### Partition类
 [partition array](https://www.lintcode.com/problem/partition-array/description)  
-TODO: [quick select](https://www.lintcode.com/problem/kth-smallest-numbers-in-unsorted-array/description)  
+**[quick select](https://www.lintcode.com/problem/kth-smallest-numbers-in-unsorted-array/description)**  
+区分rank与index。
+
 [interleaving positive and negative numbers](https://www.lintcode.com/problem/interleaving-positive-and-negative-numbers/description)  
 [sort letters by case](https://www.lintcode.com/problem/sort-letters-by-case/description)  
 [sort colors](https://www.lintcode.com/problem/sort-colors/description)  
@@ -99,52 +74,27 @@ partition成三个部分
 TODO: [nuts and bots problem](https://www.lintcode.com/en/problem/nuts-bolts-problem/)  
 
 
-```
-# 这个模版需要将pivot点设置在最左边
-def partition(nums, start, end):
-  left, right = start, end
-  pivot = nums[left]
-  while left < right:
-    while left < right and nums[right] >= nums[left]:
-      right -= 1
-    nums[left] = nums[right]
-    while left < right and nums[left] <= nums[right]:
-      left += 1
-    nums[right] = nums[left]
-
-  nums[left] = pivot
-  return left    
-```
-```
-def partition(nums, k):
-  left, right = start, end
-  while left < right:
-    while left < right and nums[left] < k:
-      left += 1
-
-    while left < right and nums[right] >= k:
-      right -= 1
-
-    if left < right:    
-      nums[left], nums[right] = nums[right], nums[left]
-      left += 1
-      right -= 1
-
-  return left    
-```
-
-
 ### 同向双指针 (滑动窗口，快慢指针)
 [move zeros](https://drive.google.com/drive/my-drive)  
-TODO: [minimum size subarray sum](https://www.lintcode.com/en/problem/minimum-size-subarray-sum/)  
+[minimum size subarray sum](https://www.lintcode.com/en/problem/minimum-size-subarray-sum/)  
 TODO: [longest substring without repeated characters](https://www.lintcode.com/en/problem/longest-substring-without-repeating-characters/)  
 TODO: [minimum window substring](https://www.lintcode.com/en/problem/minimum-window-substring/)  
 TODO: [longest substring with at most K distinct characters](https://www.lintcode.com/problem/longest-substring-with-at-most-k-distinct-characters/)  
 TODO: [intersection of two linked list](https://www.lintcode.com/problem/intersection-of-two-linked-lists/description)  
 TODO: [linked list cycle I/II](https://www.lintcode.com/problem/linked-list-cycle/description)  
 
+TODO: [submatrix sum](https://www.lintcode.com/en/problem/submatrix-sum/)  
+枚举行起点与终点，中间变化为一纬的subarray sum。  
+TODO: [subarray sum II](https://www.lintcode.com/problem/subarray-sum-ii/description)  
+用presum+二分。  
+TODO: [continuous subarray sum I/II](https://www.lintcode.com/problem/continuous-subarray-sum/)  
+TODO: [wiggle sort I/II](https://www.lintcode.com/problem/wiggle-sort-ii/description)  
+
 
 ## BFS
+
+**BFS time complexity: O(N+M)， N为点数，M为边数。**
+
 [binary tree level order traversal I/II](https://leetcode.com/problems/binary-tree-level-order-traversal/)  
 [serialize and deserialize](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)  
 [binary tree zigzag level order traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)  
@@ -158,9 +108,11 @@ TODO: [linked list cycle I/II](https://www.lintcode.com/problem/linked-list-cycl
 [course schedule I/II](https://www.lintcode.com/problem/course-schedule/description)  
 [alien dictionary](https://www.lintcode.com/problem/alien-dictionary/description)  
 
+TODO: [Build Post Office](https://www.lintcode.com/en/problem/build-post-office-ii/)  
+通常这类题暗指房子数量远小于棋盘大小。  
 
-BFS time complexity: O(N+M)， N为点数，M为边数。
-
+TODO: [bomb enermy](https://www.lintcode.com/en/problem/bomb-enemy/)  
+记录上下左右四个方向能被炸到的数量。  
 
 ## DFS
 [combination sum](https://www.lintcode.com/problem/combination-sum/)  
@@ -199,7 +151,7 @@ TODO: [trapping rain water II](https://www.lintcode.com/problem/trapping-rain-wa
 维护max/max stack， size(max_stack) -size(min_stack) = 0 or = -1
 TODO: [sliding window median](https://www.lintcode.com/problem/sliding-window-median/description)  
 
-**Heap解说**
+**Heap复杂度**
 
 indexing: 左右子节点2*i+1 / 2*i+2， 父节点(i-1) / 2
 add(): O(logn)  
@@ -207,34 +159,6 @@ pop(): O(logn)
 remove(): O(n)，可借用hash+heap优化至O(logn)  
 top(): O(1)  
 heapify(): O(n)
-
-```
-def sift_up(id):
-  while (parent(id) > -1):
-    parent_id = parent(id)
-    if heap.get(parent_id) < heap.get(id):
-      break
-    else:
-      swap(id, parent_id)
-    id = parent_id    
-```
-
-```
-def sift_down(id):
-  while lson(id) < heap.size():
-    left_id = lson(id)
-    right_id = rson(id)
-    if right_id > heap.size() or heap.get(left_id) < heap.get(right_id):
-      son = left_id
-    else:
-      son = right_id
-
-    if heap.get(id) < heap.get(son):
-      break
-    else:
-      swap(id, son)
-    id = son    
-```
 
 ### Stack
 TODO: [evaluate reverse polish notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)  
@@ -249,49 +173,6 @@ TODO: [sliding window matrix maximum](https://www.lintcode.com/problem/sliding-w
 
 ### Trie
 [implement Trie](https://www.lintcode.com/problem/implement-trie-prefix-tree/description)  
-```
-class TrieNode(object):
-
-    def __init__(self, c=None):
-        self.char = c
-        self.children = {}
-        self.is_word = False
-
-class Trie:
-
-    def __init__(self):        
-        self.root = TrieNode()
-
-    def insert(self, word):        
-        node = self.root
-        for c in word:
-            if c not in node.children:
-                node.children[c] = TrieNode(c)
-
-            node = node.children[c]
-
-        node.is_word = True
-
-    def search(self, word):        
-        node = self.root
-        for c in word:
-            if c not in node.children:
-                return False
-
-            node = node.children[c]
-
-        return node.is_word
-
-    def startsWith(self, prefix):
-        node = self.root
-        for c in prefix:
-            if c not in node.children:
-                return False
-
-            node = node.children[c]
-
-        return True
-```
 TODO: [add and search word](https://www.lintcode.com/problem/add-and-search-word-data-structure-design/description)  
 
 
@@ -304,36 +185,6 @@ TODO: [number of islands II](https://www.lintcode.com/problem/number-of-islands-
 TODO: [graph valid tree](https://www.jiuzhang.com/solutions/graph-valid-tree/)  
 TODO: [surrounded regions](https://www.lintcode.com/problem/surrounded-regions/description)  
 
-
-```
-class UnionFind(object):
-
-    def __init__(self, labels):
-        self.father = {}
-        for x in labels:
-            self.father[x] = x
-
-    # amortized time complexity O(1)
-    def compress_find(self, x):
-        parent = self.father[x]
-        while parent != self.father[parent]:
-            parent = self.father[parent]
-
-        while x != self.father[x]:
-            next_val = self.father[x]
-            self.father[x] = parent
-            x = next_val
-
-        return parent
-
-    # amortized time complexity O(1)
-    def union(self, x, y):
-        father_x = self.compress_find(x)
-        father_y = self.compress_find(y)
-
-        if father_x != father_y:
-            self.father[father_x] = father_y
-```
 
 ### Sweep line
 TODO: [number of airlines in the sky](https://www.lintcode.com/problem/number-of-airplanes-in-the-sky/)  
@@ -377,6 +228,7 @@ O(n^2): dp[i]为以nums[i]为结尾的最长LIS。dp[i] = max(dp[k] + 1 if nums[
 O(nlogn): 比较难想到，用一个辅助数组B，下标为LIS的长度，值为对应LIS的结尾的最小数。用二分在B上搜索第一个大于nums[i]的数并更新。因为B的初始值都为max int, 开始会不断往后更新。若二分找到小于i的index，则说明对应的LIS有更小的结尾数，即nums[i]。
 
 [LIS II](https://www.lintcode.com/en/problem/longest-increasing-continuous-subsequence-ii/)  
+对四个方向根据increasing sequence进行memory search。
 
 [Russian Doll Envelopes](https://www.lintcode.com/problem/russian-doll-envelopes/)  
 这题O(n^2)过不了，需要借助二分搜。先按信封第一维排序，然后在第二维中找LIS。二分方法类似LIS，借用辅助数组。
@@ -388,13 +240,16 @@ O(nlogn): 比较难想到，用一个辅助数组B，下标为LIS的长度，值
 
 [maximum square](https://www.lintcode.com/en/problem/maximal-square/)  
 
-TODO: [coins in a line I/II/III](https://www.lintcode.com/problem/coins-in-a-line-iii/description)  
+[coins in a line I/II/III](https://www.lintcode.com/problem/coins-in-a-line-iii/description)  
+II：可以返回(先手，后手)的tuple，最后判别先手是否大于后手。  
 
-TODO: [burst ballons](https://www.lintcode.com/en/problem/burst-balloons/)  
+[burst ballons](https://www.lintcode.com/en/problem/burst-balloons/)  
 
-TODO: [scramble string](https://www.lintcode.com/problem/scramble-string/)  
+[scramble string](https://www.lintcode.com/problem/scramble-string/)  
+利用substring作为memo的key容易很多。假设将s1, s2切分为s11, s12, s21(s23), s22(s24),公式为:
+(s11 isScramble s21 and s12 isScramble s22) or (s11 isScramble s24 and s12 isScramble s23)   
 
-TODO: [backpack I/II](https://www.lintcode.com/en/problem/backpack/)  
+[backpack I/II](https://www.lintcode.com/en/problem/backpack/)  
 
 TODO: [k sum](https://www.lintcode.com/en/problem/k-sum/)  
 三维DP。
