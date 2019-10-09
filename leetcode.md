@@ -7,7 +7,7 @@
 [find minimum in rotated sorted array](https://www.lintcode.com/problem/find-minimum-in-rotated-sorted-array/description)  
 [search in rotated sorted array](https://www.lintcode.com/problem/find-minimum-in-rotated-sorted-array/description)  
 [find peak element](https://www.lintcode.com/problem/find-peak-element/)  
-TODO: [find peak element II](https://www.lintcode.com/en/problem/find-peak-element-ii/)  
+[find peak element II](https://www.lintcode.com/en/problem/find-peak-element-ii/)  
 对行进行二分，然后选取一行中的**最大值**，再选择向上或者向下走。注意不能选取极大值。复杂度为O(lgn*n)。最优做法为分行列分别二分，可以达到O(n)。  
 
 
@@ -25,7 +25,6 @@ TODO: [find peak element II](https://www.lintcode.com/en/problem/find-peak-eleme
 [binary search tree iterator](https://www.lintcode.com/problem/binary-search-tree-iterator/description)  
 **[closest binary search tree value I/II](https://www.lintcode.com/problem/closest-binary-search-tree-value/description)**  
 I: 用in-order遍历做是O(n)的，这题可以求lower bound与upper bound，复杂度为O(h)。  
-
 II: 三种解法  
 1) 用priority queue - O(nlogk)  
 2) 先求出inorder，再二分找到小于并最近的，然后往两边走直到找到k个 - O(n) + O(logn) = O(n)  
@@ -53,9 +52,9 @@ II: 三种解法
 
 [best time to buy and sell stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/submissions/)  
 虽然不是背向指针，但是用到两个方向遍历。因为限制最多两笔交易，从左向右扫一遍记录到i为止一笔最大的交易，再从右向左扫一遍记录到i为止最大的交易，两者之和即为最大profit。  
+
 [best time to buy and sell stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/)  
 dp[i][j]为到第i天最多交易j次的max profit，解为dp[n-1][k]。具体解法见[leetcode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54117/Clean-Java-DP-solution-with-comment)  
-
 
 
 ### Partition类
@@ -83,10 +82,11 @@ TODO: [longest substring with at most K distinct characters](https://www.lintcod
 TODO: [intersection of two linked list](https://www.lintcode.com/problem/intersection-of-two-linked-lists/description)  
 TODO: [linked list cycle I/II](https://www.lintcode.com/problem/linked-list-cycle/description)  
 
-TODO: [submatrix sum](https://www.lintcode.com/en/problem/submatrix-sum/)  
+[submatrix sum](https://www.lintcode.com/en/problem/submatrix-sum/)  
 枚举行起点与终点，中间变化为一纬的subarray sum。  
 TODO: [subarray sum II](https://www.lintcode.com/problem/subarray-sum-ii/description)  
-用presum+二分。  
+用presum+二分。写起来index非常复杂，且遇到超时。  
+  
 TODO: [continuous subarray sum I/II](https://www.lintcode.com/problem/continuous-subarray-sum/)  
 TODO: [wiggle sort I/II](https://www.lintcode.com/problem/wiggle-sort-ii/description)  
 
