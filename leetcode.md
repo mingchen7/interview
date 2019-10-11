@@ -84,11 +84,14 @@ TODO: [linked list cycle I/II](https://www.lintcode.com/problem/linked-list-cycl
 
 [submatrix sum](https://www.lintcode.com/en/problem/submatrix-sum/)  
 枚举行起点与终点，中间变化为一纬的subarray sum。  
-TODO: [subarray sum II](https://www.lintcode.com/problem/subarray-sum-ii/description)  
+[subarray sum II](https://www.lintcode.com/problem/subarray-sum-ii/description)  
 用presum+二分。写起来index非常复杂，且遇到超时。  
-  
-TODO: [continuous subarray sum I/II](https://www.lintcode.com/problem/continuous-subarray-sum/)  
-TODO: [wiggle sort I/II](https://www.lintcode.com/problem/wiggle-sort-ii/description)  
+
+[continuous subarray sum I/II](https://www.lintcode.com/problem/continuous-subarray-sum/)  
+[wiggle sort I/II](https://www.lintcode.com/problem/wiggle-sort-ii/description)  
+I: 可以直接通过对换相邻的。  
+II: 找到median，并进行3-way partition(<, =, >)。再根据奇偶与三个partition的count来wiggle。  
+
 
 
 ## BFS
@@ -108,8 +111,11 @@ TODO: [wiggle sort I/II](https://www.lintcode.com/problem/wiggle-sort-ii/descrip
 [course schedule I/II](https://www.lintcode.com/problem/course-schedule/description)  
 [alien dictionary](https://www.lintcode.com/problem/alien-dictionary/description)  
 
-TODO: [Build Post Office](https://www.lintcode.com/en/problem/build-post-office-ii/)  
+[Build Post Office I/II](https://www.lintcode.com/en/problem/build-post-office-ii/)  
 通常这类题暗指房子数量远小于棋盘大小。  
+I: 计算空地到所有房子距离时可以用二分法+presum来优化, O(n) -> O(logn)  
+II: 根据房子进行bfs，统计reach和distance。注意按层bfs时visited加的位置。  
+
 
 TODO: [bomb enermy](https://www.lintcode.com/en/problem/bomb-enemy/)  
 记录上下左右四个方向能被炸到的数量。  
