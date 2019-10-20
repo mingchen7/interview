@@ -76,11 +76,16 @@ TODO: [nuts and bots problem](https://www.lintcode.com/en/problem/nuts-bolts-pro
 ### 同向双指针 (滑动窗口，快慢指针)
 [move zeros](https://drive.google.com/drive/my-drive)  
 [minimum size subarray sum](https://www.lintcode.com/en/problem/minimum-size-subarray-sum/)  
-TODO: [longest substring without repeated characters](https://www.lintcode.com/en/problem/longest-substring-without-repeating-characters/)  
-TODO: [minimum window substring](https://www.lintcode.com/en/problem/minimum-window-substring/)  
-TODO: [longest substring with at most K distinct characters](https://www.lintcode.com/problem/longest-substring-with-at-most-k-distinct-characters/)  
-TODO: [intersection of two linked list](https://www.lintcode.com/problem/intersection-of-two-linked-lists/description)  
-TODO: [linked list cycle I/II](https://www.lintcode.com/problem/linked-list-cycle/description)  
+[longest substring without repeated characters](https://www.lintcode.com/en/problem/longest-substring-without-repeating-characters/)  
+[minimum window substring](https://www.lintcode.com/en/problem/minimum-window-substring/)  
+[longest substring with at most K distinct characters](https://www.lintcode.com/problem/longest-substring-with-at-most-k-distinct-characters/)  
+注意需要在当满足遇到第K+1个字符的时候即break。  
+
+[intersection of two linked list](https://www.lintcode.com/problem/intersection-of-two-linked-lists/description)  
+记录A和B的长度然后从相同长度位置开始走。  
+
+[linked list cycle I/II](https://www.lintcode.com/problem/linked-list-cycle/description)  
+快慢指针。  
 
 [submatrix sum](https://www.lintcode.com/en/problem/submatrix-sum/)  
 枚举行起点与终点，中间变化为一纬的subarray sum。  
@@ -117,8 +122,8 @@ I: 计算空地到所有房子距离时可以用二分法+presum来优化, O(n) 
 II: 根据房子进行bfs，统计reach和distance。注意按层bfs时visited加的位置。  
 
 
-TODO: [bomb enermy](https://www.lintcode.com/en/problem/bomb-enemy/)  
-记录上下左右四个方向能被炸到的数量。  
+[bomb enermy](https://www.lintcode.com/en/problem/bomb-enemy/)  
+用dp记录上下左右四个方向能被炸到的数量。用暴力四个方向搜会超时。    
 
 ## DFS
 [combination sum](https://www.lintcode.com/problem/combination-sum/)  
