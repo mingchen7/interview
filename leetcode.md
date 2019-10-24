@@ -155,12 +155,12 @@ hashmap+linked list
 [merge k sorted lists](https://www.lintcode.com/problem/merge-k-sorted-lists/description)  
 python的heap只能存tuple(val, node)，在val相同时会比较node而报错，不太好写。用merge sort更好做。
 
-TODO: [trapping rain water II](https://www.lintcode.com/problem/trapping-rain-water-ii/description)    
+[trapping rain water II](https://www.lintcode.com/problem/trapping-rain-water-ii/description)    
 技巧：矩阵从外向内遍历  
 
 [data stream median](https://www.lintcode.com/problem/find-median-from-data-stream/description)    
-维护max/max stack， size(max_stack) -size(min_stack) = 0 or = -1
-TODO: [sliding window median](https://www.lintcode.com/problem/sliding-window-median/description)  
+维护max/max stack， size(max_stack) -size(min_stack) = 0 or = -1  
+[sliding window median](https://www.lintcode.com/problem/sliding-window-median/description)  
 
 **Heap复杂度**
 
@@ -172,12 +172,12 @@ top(): O(1)
 heapify(): O(n)
 
 ### Stack
-TODO: [evaluate reverse polish notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)  
-*Super Stack*: 实现min, max, mode, avg的stack  
+[evaluate reverse polish notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)  
+Super Stack: 实现min, max, mode, avg的stack  
 two sigma面经，min/max按LC来，avg需要记录sum。most frequent需要用一个map记录frequency，另一个map记录frequency to set of numbers,同时维护全局最大frequency。
 
 ### Deque
-TODO: [sliding window maximum](https://www.lintcode.com/problem/sliding-window-maximum/description)  
+[sliding window maximum](https://www.lintcode.com/problem/sliding-window-maximum/description)  
 维护一个递减队列，队列头为当前window的max。  
 
 TODO: [sliding window matrix maximum](https://www.lintcode.com/problem/sliding-window-matrix-maximum/description)  
@@ -191,9 +191,13 @@ TODO: [add and search word](https://www.lintcode.com/problem/add-and-search-word
 [find the connected component in the undirected graph](https://www.lintcode.com/problem/connected-component-in-undirected-graph/description)  
 经典的连通块问题，但用BFS/DFS也都可以做，感觉用union find反而写更多。
 
-TODO: [find the weak connected component in the directed graph](https://www.lintcode.com/problem/find-the-weak-connected-component-in-the-directed-graph/description)  
-TODO: [number of islands II](https://www.lintcode.com/problem/number-of-islands-ii/)  
-TODO: [graph valid tree](https://www.jiuzhang.com/solutions/graph-valid-tree/)  
+[find the weak connected component in the directed graph](https://www.lintcode.com/problem/find-the-weak-connected-component-in-the-directed-graph/description)  
+用uf写和上一题一样。  
+
+[number of islands II](https://leetcode.com/problems/number-of-islands-ii/submissions/)  
+注意重复的pos以及union前是否判断是否parent一样。  
+[graph valid tree](https://www.jiuzhang.com/solutions/graph-valid-tree/)  
+边数等于点的数量-1，且acyclic。  
 TODO: [surrounded regions](https://www.lintcode.com/problem/surrounded-regions/description)  
 
 
